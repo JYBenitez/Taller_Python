@@ -9,7 +9,7 @@ iNumero = 0
 txtPositivo="Por favor ingrese un valor mayor o igual a cero(0):\n"
 txtNegativo="Por favor ingrese un valor menor a cero(0):\n"
 txt=txtPositivo
-iCantMax=10
+iCantMax=6
 iCantMitad=iCantMax/2
 
 def cargarVector(vector, numero):
@@ -17,8 +17,8 @@ def cargarVector(vector, numero):
     return
 
 def ordenarVectorCreciente(vector):
-    vector.sort(reversed=False)
-    return
+    order = sorted(vector,reverse=False)
+    return order
 
 def calcularPromedio(numero, cant):
     if cant ==0:
@@ -33,7 +33,8 @@ def esMultiplo(valor, multiplo):
     else:
         return valor%multiplo
     return
-print("Se deben ingresar 10 numeros enteros.\nEn primer lugar se ingresaran %d valores positivos; luego, %d negativos.\nUna vez cargados, se mostrara los resultados." %iCantMitad %iCantMitad)
+
+print("Se deben ingresar 10 numeros enteros.\nEn primer lugar se ingresaran %d valores positivos; luego, %d negativos.\nUna vez cargados, se mostrara los resultados." %(iCantMitad, iCantMitad))
 
 while iCant < iCantMax:
     iNumero = int(input(txt))
@@ -41,7 +42,7 @@ while iCant < iCantMax:
         cargarVector(aNumeros, iNumero)
         if iNumero < 0:
             iSumNegativos+=iNumero
-        if esMultiplo(iNumero,4) == 0:
+        if iNumero < 0 and esMultiplo(iNumero,4) == 0:
             cargarVector(aMulti4,iNumero)
             iCantMulti4+=1
             if esMultiplo(iNumero,3) == 0:
@@ -53,7 +54,7 @@ while iCant < iCantMax:
             txt=txtNegativo  
 print ("Promedio de los numeros negativos es:%d /n" %(calcularPromedio(iSumNegativos,iCantMitad)))
 print ("Vector ordenado ascendente:/n")
-ordenarVectorCreciente(aNumeros)
+aNumeros=ordenarVectorCreciente(aNumeros)
 for i in range(iCantMax):
     print("elemento %d, valor: %d/n" %(i, aNumeros[i])) 
 if iCantMulti4>0:
